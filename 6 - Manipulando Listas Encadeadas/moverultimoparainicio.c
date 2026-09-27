@@ -29,12 +29,14 @@ p = criar_no(5, criar_no(8, criar_no(13, criar_no(2, NULL))));
 
 
 int main() {
-    NoLista *x = p;
-    int y;
-    while(x->prox->prox != NULL){
-        x = x->prox;
+    NoLista *qant = NULL;
+    NoLista *q = p;
+
+    while(q->prox != NULL){
+        qant = q;
+        q = q->prox;
     }
-    y = x->prox->valor;
-    x->prox = NULL;
-    p = criar_no(y,p);
+    qant->prox = NULL;
+    q->prox = p;
+    p = q;
 }
