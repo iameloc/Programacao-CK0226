@@ -50,7 +50,14 @@ int main() {
         q = q->prox;
     }
 
-    mant->prox = m->prox;
-    m->prox = NULL;
-    qant->prox = m;
+  if (m != NULL && m != qant) { 
+      if (mant == NULL) {
+          p = m->prox;          
+      } else {
+          mant->prox = m->prox; 
+      }
+  
+      qant->prox = m;           
+      m->prox = NULL;
+	}
 }
