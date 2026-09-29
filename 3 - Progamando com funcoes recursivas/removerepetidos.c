@@ -11,29 +11,22 @@ void remova_repetidos(int L[], int i, int j);
 // -- escreva seu código abaixo, não altere esta linha
 
 void remova_repetidos(int L[], int i, int j){
-    if(i>=j) return;
-
-    if(j-i==1){
-        if(L[i]==L[i+1]){
-            L[i+1] = 0;
-        }
-        else return;
-    }
-
-    for(int k = i+1; k<=j; k++){
+    if(i>j) return;
+    if(L[i]==0) return;
+    int k = i+1;
+    while(k<=j){
         if(L[k]==L[i]){
-            for(int p = k; p<j; p++){
-                L[p] = L[p+1];
+            int l = k;
+            while(l+1<=j){
+                L[l] = L[l+1]; l++;
             }
-            L[j] = 0; j--;
+            while(l<=j){
+                L[l] = 0; l++;
+            }
         }
-        //for(int i = 0; i<N; i++){
-        //printf("%d ", L[i]);
-        //}
-        //printf("\n");
+        else k++;
     }
     remova_repetidos(L,i+1,j);
-
 }
 
 
