@@ -14,21 +14,27 @@ int B[M] = {2,8,19,20,32};
 
 
 int main() {
-    int i = N-1;
-    int j = M-1;
-    int p = N-1;
+    int i = 0; //dedo no inicio de L
+    int j = 0; //dedo no inicio de B
+    int p = 0; //dedo no inicio de L
 
-    while(j>=0){
-        if(L[i]>B[j]){
-            i--;
+    while(i<N && j<M){
+        if(L[i]==B[j]){ //nao estara em L final
+            i++; //
         }
-        else if(L[i]==B[j]){
-            L[i]=L[p];
-            L[p]=0;
-            i--;j--;p--;
+        else if(L[i]>B[j]) j++;
+        else if(L[i]<B[j]){
+            L[p] = L[i];
+            i++; p++;
         }
     }
-    for(int i = 0; i<N; i++){
-        printf("%d " ,L[i]);
+
+    while(i<N){
+        L[p] = L[i];
+        i++; p++;
+    }
+
+    while(p<N){
+        L[p] = 0; p++;
     }
 }
