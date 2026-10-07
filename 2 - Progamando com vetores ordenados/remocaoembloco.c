@@ -14,13 +14,13 @@ int B[M] = {2,8,19,20,32};
 
 
 int main() {
-    int i = 0; //dedo no inicio de L
-    int j = 0; //dedo no inicio de B
-    int p = 0; //dedo no inicio de L
+    int i = 0; 
+    int j = 0; 
+    int p = 0; 
 
     while(i<N && j<M){
-        if(L[i]==B[j]){ //nao estara em L final
-            i++; //
+        if(L[i]==B[j]){ 
+            i++; 
         }
         else if(L[i]>B[j]) j++;
         else if(L[i]<B[j]){
