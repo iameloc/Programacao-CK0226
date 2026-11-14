@@ -23,36 +23,33 @@ NoLista * p;
 // -- escreva seu código abaixo, não altere esta linha
 
 
+int main() {    
+    if(p==NULL) return 0;
 
-int main() {
-    NoLista *atual = p;
-    NoLista *ant = NULL;
+    NoLista * atual = p;
+    NoLista * ant = NULL;
 
-    while(atual != NULL && atual->valor%2 == 0){
+    while(atual!=NULL && atual->valor%2==0){
         ant = atual;
         atual = atual->prox;
     }
-    if(atual == NULL) return 0;
     atual->valor *= 2;
 
-    if(atual->prox != NULL && atual->valor > atual->prox->valor){
-        if(ant == NULL) p = atual->prox;
-        else ant->prox = atual->prox;
-
-        NoLista *nant = NULL;
-        NoLista *natual = p;
-        while(natual != NULL && natual->valor < atual->valor){
-            nant = natual;
-            natual = natual->prox;
-        }
-
-        if(nant == NULL){
-            atual->prox = p;
-            p = atual;
-        } else {
-            atual->prox = natual;
-            nant->prox = atual;
-        }
+    while(atual->prox!=NULL && atual->valor>atual->prox->valor){
+        if(ant == NULL){
+            ant = atual->prox;
+            atual->prox = ant->prox;
+            ant->prox = atual;
+            p = ant;
+        }else{
+            ant->prox = atual->prox;
+            ant = ant->prox;
+            atual->prox = ant->prox;
+            ant->prox = atual;
+    	}
     }
 
 }
+
+
+
